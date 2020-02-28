@@ -54,7 +54,7 @@ def main():
             continue
 
     # Close the client socket
-    clientsocket.close()
+    clientSocket.close()
 
 if __name__ == "__main__":
     main()
