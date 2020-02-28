@@ -24,12 +24,14 @@ def main():
     # Ping for 10 times
     while ptime < 10: 
         ptime += 1
+        RTT = 0.0
         # Format the message to be sent as in the Lab description	
-        data = "Ping " + str(ptime) # message should be: Ping sequence_number time, where time is when the client sends the message
+        data = "Ping\t" + str(ptime) + "\t" + str(RTT) # message should be: Ping sequence_number time, where time is when the client sends the message
         
         try:
             # Record the "sent time"
-            time_sent = time.time()
+            time_sent = time.time()*1000
+            print("time_sent: ", time_sent)
 
             # Send the UDP packet with the ping message
             clientSocket.sendto(data.encode(), (host, port))
@@ -38,13 +40,15 @@ def main():
             serverResponse, _ = clientSocket.recvfrom(2048)
       
             # Record the "received time"
-            time_received = time.time()
+            time_received = time.time()*1000
+            print("time_received: ", time_received)
 
             # Display the server response as an output
             print("server responded: ", serverResponse.decode())
         
             # Round trip time is the difference between sent and received time
             RTT = time_received - time_sent
+            print("RTT in ms: ", RTT)
 
             
         except:
