@@ -25,7 +25,7 @@ def main():
     while ptime < 10: 
         ptime += 1
         # Format the message to be sent as in the Lab description	
-        data = "Ping " + ptime # message should be: Ping sequence_number time, where time is when the client sends the message
+        data = "Ping " + str(ptime) # message should be: Ping sequence_number time, where time is when the client sends the message
         
         try:
             # Record the "sent time"
