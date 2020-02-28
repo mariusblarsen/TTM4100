@@ -1,21 +1,22 @@
 import time
-from socket import *
+import sys
+from socket import * # Don't need to specify socket.method()
 
 # Get the server hostname and port as command line arguments                    
-host = # FILL IN START		# FILL IN END
-port = # FILL IN START		# FILL IN END
+host =  sys.argv[0]
+port = sys.argv[1]
 timeout = 1 # in seconds
  
 # Create UDP client socket
-# FILL IN START		
+clientSocket = socket(AT_INET, SOCK_DGRAM)
+clientSocket.bind((host, port))
 
 # Note the second parameter is NOT SOCK_STREAM
 # but the corresponding to UDP
 
 # Set socket timeout as 1 second
+clientSocket.settimeout(timeout)
 
-
-# FILL IN END
 
 # Sequence number of the ping message
 ptime = 0  
