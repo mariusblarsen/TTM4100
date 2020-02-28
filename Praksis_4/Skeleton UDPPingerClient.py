@@ -4,14 +4,14 @@ from socket import * # Don't need to specify socket.method()
 
 # Get the server hostname and port as command line arguments                    
 def main():
-    host =  sys.argv[0]
+    host =  sys.argv[1]
     print("host: ", host)
-    port = sys.argv[1]
+    port = int(sys.argv[2])
     print("port: ", port)
     timeout = 1 # in seconds
      
     # Create UDP client socket
-    clientSocket = socket(AT_INET, SOCK_DGRAM) #Internet and UDP
+    clientSocket = socket(AF_INET, SOCK_DGRAM) #Internet and UDP
     clientSocket.bind((host, port))
 
     # Set socket timeout as 1 second
@@ -41,7 +41,7 @@ def main():
             time_received = time.time()
 
             # Display the server response as an output
-            print("server responded: ", serverResponse)
+            print("server responded: ", serverResponse.decode())
         
             # Round trip time is the difference between sent and received time
             RTT = time_received - time_sent
